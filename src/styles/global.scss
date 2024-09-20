@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
+$color-black: #000000;
+$color-gray: rgba(0, 0, 0, 0.54);
+$color-light-gray: #D7DDE9;
+$color-blue: #0796D3;
+$color-light-blue: #A0DCF6;
+$color-red: #D30707;
+$color-light-red: #F05353;
+$color-background: #F7F9FD;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.36px;
+  letter-spacing: -0.02em;
+}
+
+.home-container {
+  @media (max-width: 768px) {
+    margin: 24px;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 56px;
+    color: $color-black;
+    border-bottom: 1px solid $color-light-gray;
+    padding-bottom: 24px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin: 24px 0px;
+      width: 100%;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      width: 150px;
+      height: 36px;
+    }
+
+    .welcome-message {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 29.04px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    .data {
+      color: $color-gray;
+    }
+  }
+
+  .task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+
+    @media (max-width: 768px) {
+      margin: 0px;
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid $color-light-gray;
+      border-radius: 16px;
+      width: 450px;
+      box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+      padding: 32px;
+      gap: 24px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        gap: 8px;
+        padding: 0px 32px 32px;
+      }
+
+      .task-list-title {
+        color: $color-gray;
+
+        @media (max-width: 768px) {
+          margin: 24px;
+        }
+      }
+
+      .task-item {
+        display: flex;
+        align-items: center;
+        border: 1px dashed $color-light-gray;
+        width: 386px;
+        height: 56px;
+        border-radius: 8px;
+        padding: 16px;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-background;
+          border: none;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          padding: 16px 8px;
+          gap: 16px;
+        }
+
+        .task-check {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        input[type="checkbox"] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          border: 2px solid $color-light-gray;
+          border-radius: 4px;
+          cursor: pointer;
+          position: relative;
+          background-color: transparent;
+        }
+
+        input[type="checkbox"]:checked {
+          background-color: $color-light-blue;
+          border: 2px solid $color-blue;
+        }
+
+        input[type="checkbox"]:checked::before {
+          content: "✓";
+          font-size: 16px;
+          color: $color-blue;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .completed {
+          text-decoration: line-through;
+          color: gray;
+        }
+
+        .delete-icon {
+          background: none;
+          border: none;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .add-task-button {
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(to right, $color-blue, $color-light-blue);
+      color: #FFFFFF;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      width: 450px;
+      height: 51px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    background-color: transparent;
+    backdrop-filter: none;
+  }
+
+  .modal-content {
+    background-color: #FFFFFF;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.18);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 500;
+      padding-bottom: 32px;
+      line-height: 29px;
+    }
+
+    .modal-input {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-text {
+      margin-bottom: 32px;
+      padding: 16px;
+      border: 1px solid $color-light-gray;
+      border-radius: 8px;
+      width: 386px;
+      height: 51px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    .modal-msg {
+      color: $color-gray;
+      padding-bottom: 32px;
+      line-height: 29px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        gap: 8px;
+      }
+
+      .btn-cancel {
+        background-color: #E7EEFB;
+        border: none;
+        border-radius: 8px;
+        width: 185px;
+        height: 51px;
+      }
+
+      .btn-add {
+        background: linear-gradient(to right, $color-blue, $color-light-blue);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+        width: 185px;
+        height: 51px;
+        font-weight: 500;
+      }
+
+      .btn-del {
+        background: linear-gradient(to right, $color-red, $color-light-red);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+        width: 185px;
+        height: 51px;
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        .btn-cancel,
+        .btn-add,
+        .btn-del {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
